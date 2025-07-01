@@ -1,8 +1,8 @@
-import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import os
 
 app = Flask(__name__)
 
@@ -13,19 +13,15 @@ def submit_message():
 
     email_sender = os.environ.get('EMAIL_USER')
     email_password = os.environ.get('EMAIL_PASSWORD')
-    email_receiver = email_sender  # you can change to another if needed
+    email_receiver = email_sender
 
-    email_subject = f"New Message from Amit 💖 [{mood}]"
-    body = f"""You received a message from Amit 💌
-
-Mood: {mood}
-Message: {message}
-"""
+    subject = f"New Message from Amit 💖 [{mood}]"
+    body = f"Mood: {mood}\n\nMessage: {message}"
 
     msg = MIMEMultipart()
     msg['From'] = email_sender
     msg['To'] = email_receiver
-    msg['Subject'] = email_subject
+    msg['Subject'] = subject
     msg.attach(MIMEText(body, 'plain'))
 
     try:
@@ -34,16 +30,20 @@ Message: {message}
             server.login(email_sender, email_password)
             server.send_message(msg)
 
-        print("✅ Email sent successfully")
-        return "<h2>✨ Message sent to the stars…Thank you..Hope this lil gift made your birthday better!<br>With all love,<br>Mrs. Amit:3</br>You are the best!Pani pilo hehe✨</h2>"
-    except Exception as e:
-        print(f"❌ Email sending error: {e}")
-        return "<h2>❌ There was an error sending your message. Please try again later.</h2>"
+        print("✅ Email sent")
+        return "<h2>✨ Thank you! Your message has been sent! ✨</h2>"
 
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        return "<h2>Oops! Something went wrong. Try again later.</h2>"
 
 @app.route('/')
 def home():
     return render_template('indexxx.html')
+
+@app.route('/fromyou')
+def from_you():
+    return render_template('fromyou.html')
 
 @app.route('/timer')
 def timer():
