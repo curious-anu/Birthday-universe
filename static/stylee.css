@@ -1,0 +1,211 @@
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(135deg, #e9d5ff, #fce7f3);
+  color: #4b006e;
+  overflow-x: hidden;
+}
+
+.main-content {
+  text-align: center;
+  margin-top: 20vh;
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3em;
+  margin-bottom: 0.2em;
+}
+
+p {
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
+}
+
+.audio-box {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 1.2em;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+footer {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+.nav-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 1.5em;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1000;
+  padding-bottom: 20px; /* Add this line */
+}
+
+.nav-menu {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 1.5em;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1000;
+  padding-bottom: 20px; /* Add this line */
+}
+
+.nav-button:hover .nav-menu,
+.nav-button:focus-within .nav-menu,
+.nav-menu:hover {
+  display: block;
+}
+.nav-menu:hover {
+  display: block;
+}
+
+.nav-menu a {
+  display: block;
+  padding: 5px 10px;
+  color: #4b006e;
+  text-decoration: none;
+  font-weight: bold;
+}
+.nav-menu a:hover {
+  background-color: #f0d9ff;
+  border-radius: 5px;
+}
+
+/* Floating Heart Animation */
+.hearts-container {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.heart {
+  width: 20px;
+  height: 20px;
+  background: pink;
+  position: absolute;
+  bottom: -20px;
+  left: calc(10% + 80% * random);
+  animation: floatUp 8s infinite ease-in;
+  clip-path: polygon(-41% 0,50% 91%, 141% 0);
+  opacity: 1;
+}
+
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 30%; animation-delay: 2s; }
+.heart:nth-child(3) { left: 50%; animation-delay: 4s; }
+.heart:nth-child(4) { left: 70%; animation-delay: 1s; }
+.heart:nth-child(5) { left: 90%; animation-delay: 3s; }
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 0.7; }
+  100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+body.love-bg {
+  background: linear-gradient(to bottom, #e6ccff, #ffffff);
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 600px;
+  margin: 100px auto;
+  background: #ffffffcc;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #d1a3ff;
+  position: relative;
+  z-index: 2;
+}
+
+textarea, select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #aaa;
+  font-size: 16px;
+}
+
+button {
+  background-color: #cc66ff;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #b84dff;
+}
+
+/* Floating hearts */
+.floating-hearts::before,
+.floating-hearts::after {
+  content: '💗';
+  font-size: 30px;
+  position: absolute;
+  animation: float 8s linear infinite;
+}
+
+.floating-hearts::after {
+  left: 70%;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0% {
+    top: 100%;
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    top: -10%;
+    opacity: 0;
+  }
+}
+.countdown-box {
+  text-align: center;
+  margin: 2em auto;
+  font-family: 'Dancing Script', cursive;
+}
+
+.countdown-box h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2em;
+  margin-bottom: 0.5em;
+  color: #6a0dad; /* Optional: match your h1 color */
+}
+
+#sunsetLine {
+  font-size: 1.3em;
+  font-family: 'Dancing Script', cursive;
+  color: #4b006e;
+}

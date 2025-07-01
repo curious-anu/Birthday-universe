@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Our Memory Wall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <style>
+    /* Hamburger nav styles */
+    .nav-button {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 1.5em;
+      cursor: pointer;
+      user-select: none;
+      z-index: 1000;
+    }
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1001;
+    }
+    .nav-button:hover .nav-menu,
+    .nav-button:focus-within .nav-menu {
+      display: block;
+    }
+    .nav-menu a {
+      display: block;
+      padding: 5px 10px;
+      color: #4b006e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .nav-menu a:hover {
+      background-color: #f0d9ff;
+      border-radius: 5px;
+    }
+    body {
+      padding-top: 80px; /* Add space so images don't go under nav */
+      background: linear-gradient(to bottom right, #fbeaff, #e6e6ff);
+      font-family: 'Shadows Into Light', cursive;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 50px 20px;
+      gap: 30px;
+      background-image: url("{{ url_for('static', filename='images/gallery/bg.png') }}");
+    }
+    .polaroid {
+      background: white;
+      padding: 10px 10px 20px 10px;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+      width: 200px;
+      transform: rotate(-2deg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px;
+    }
+    .polaroid:nth-child(even) {
+      transform: rotate(2deg);
+    }
+    .polaroid:hover {
+      transform: scale(1.05) rotate(0deg);
+      box-shadow: 10px 10px 25px rgba(0,0,0,0.3);
+      z-index: 10;
+    }
+    .polaroid img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .caption {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      color: #4b006e;
+      text-align: center;
+    }
+    h1 {
+      width: 100%;
+      text-align: center;
+      font-size: 2.5rem;
+      color: #ffffff;
+      margin-bottom: 40px;
+    } 
+  </style>
+</head>
+<body>
+  <div class="nav-button" tabindex="0">
+    ☰
+    <div class="nav-menu">
+      <a href="{{ url_for('home') }}">1.Home</a>
+      <a href="{{ url_for('timer') }}">2.Timer</a>
+      <a href="{{ url_for('game') }}">3.Game</a>
+      <a href="{{ url_for('puzzle') }}">4.Puzzle</a>
+      <a href="{{ url_for('letter') }}">5.Letter</a>
+      <a href="{{ url_for('gallery') }}">6.Gallery</a>
+      <a href="{{ url_for('cake') }}">7.Surprise</a>
+      <a href="{{ url_for('from_you') }}">8.Magic Tab</a>
+    </div>
+  </div>
+  <h1>📸 Our Memory Wall💞🥹</h1>
+  <h3>Scroll below and look back to our lil yet lovely,crazy and silly moments :3</h3><br>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory1.png') }}" alt="His face">
+    <div class="caption">This face? My peace, my chaos, my everything 💜</div>
+  </div>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory2.png') }}" alt="Building Beats">
+    <div class="caption">We built an app together. He codes my heart too 🎶💻</div>
+  </div>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory3.png') }}" alt="Study time">
+    <div class="caption">Even tho JEE aspirants,still excellent in bio :)</div>
+  </div>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory4.png') }}" alt="Hands">
+    <div class="caption">Ink on hands, love in every line ✋🖊️</div>
+  </div>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory5.png') }}" alt="Hands pt 2">
+    <div class="caption">His name on mine, mine on his. That’s forever.</div>
+  </div>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory6.png') }}" alt="His app">
+    <div class="caption">His app, his face, his world. Built for me 😭💻</div>
+  </div>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory7.png') }}" alt="Cricket moment">
+    <div class="caption">Spicy cricket commentary + us = chaos 😂🏏</div>
+  </div>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory8.png') }}" alt="Your drawing">
+    <div class="caption">Drew for him once. Got attached forever 🎨💘</div>
+  </div>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory9.png') }}" alt="Teaching files">
+    <div class="caption">Kya khula?hmm :) </div>
+  </div>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory10.png') }}" alt="Date scenario">
+    <div class="caption">He planned our dream date. Future felt real 💫</div>
+  </div>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory11.png') }}" alt="Chef">
+    <div class="caption">My Chef uwu 🍜Can't wait to feed u maggi with this recipie:3</div>
+  </div>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory12.png') }}" alt="Pokemon">
+    <div class="caption">The part of chat that still makes me tear🥺😭My rarest card to collect:3</div>
+  </div>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory13.png') }}" alt="farewell">
+    <div class="caption">From happy moments to temporary heartfelt bye for going offline..distance made us more into love and strong❤️</div>
+  </div>
+
+  <div class="polaroid">
+    <img src="{{ url_for('static', filename='images/gallery/memory14.png') }}" alt="more memories">
+    <div class="caption">I'm so grateful for every moment we shared together and I cant wait to create more of em with you..Happy birthday my amit!Your Anu loves you so much😘</div>
+  </div>
+</body>
+</html>

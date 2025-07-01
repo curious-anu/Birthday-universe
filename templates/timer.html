@@ -4,20 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Since Amit Was Born 💜</title>
-  <link rel="stylesheet" href="stylee.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='stylee.css') }}" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<div class="nav">
-  <a href="indexxx.html">1.Home💗</a>
-  <a href="timer.html">2.Timer(This Page)💗</a>
-  <a href="game.html">3.Game💗</a>
-  <a href="puzzle.html">4.Drag and drop puzzle!!💗</a>
-  <a href="letter.html">5.A letter💗</a>
-  <a href="gallery.html">6.Memory pic wall💗</a>
-  <a href="cake.html" id="cakeLink"> 7.Surprise!</a>
-</div>
 
 
   <!-- Floating Hearts Background (optional, reuse from home page) -->
@@ -32,15 +22,17 @@
   <!-- Top Navigation -->
   <div class="nav-button">
     ☰
-    <div class="nav-menu">
-      <a href="indexxx.html">1.Home</a>
-      <a href="timer.html">2.Timer</a>
-      <a href="game.html">3.Game</a>
-      <a href="puzzle.html">4.Puzzle</a>
-      <a href="letter.html">5.Letters</a>
-      <a href="gallery.html">6.Memory pic Wall </a>
-      <a href="cake.html">7.Surprise! </a>
-    </div>
+  <div class="nav-menu">
+  <a href="{{ url_for('home') }}">1.Home</a>
+  <a href="{{ url_for('timer') }}">2.Timer</a>
+  <a href="{{ url_for('game') }}">3.Game</a>
+  <a href="{{ url_for('puzzle') }}">4.Puzzle</a>
+  <a href="{{ url_for('letter') }}">5.Letter</a>
+  <a href="{{ url_for('gallery') }}">6.Gallery</a>
+  <a href="{{ url_for('cake') }}">7.Surprise</a>
+  <a href="{{ url_for('from_you') }}">8.Magic Tab(to be visited after all the tabs)</a>
+</div>
+
   </div>
 
   <!-- Main Timer Section -->
@@ -48,6 +40,12 @@
     <h1>Since the World Got Lucky and brighter... 💖</h1>
     <p id="time-since">Loading timer...</p>
   </div>
+
+<div class="countdown-box">
+  <h2>Since our bond began 💞</h2>
+  <p id="sunsetLine"></p>
+</div>
+
 
   <footer>
     Counting every second of love 💜
@@ -71,6 +69,24 @@
 
     setInterval(updateTimer, 1000);
     updateTimer(); // initial call
+
+
+  const startDate = new Date("December 4, 2024 00:00:00").getTime();
+
+  function updateLoveStory() {
+    const now = new Date().getTime();
+    const diffTime = now - startDate;
+    const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    const line = `That's ${days} sunrise, ${days} late-night chats, and one unshakable eternal love story.`;
+
+    document.getElementById("sunsetLine").textContent = line;
+  }
+
+  updateLoveStory();
+  setInterval(updateLoveStory, 1000 * 60 * 60); // updates every hour if needed
+
+
   </script>
 
 </body>

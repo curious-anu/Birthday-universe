@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>From You, To Me 💌</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='stylee.css') }}">
+
+<style>
+
+#emojiContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 5;
+}
+
+
+select {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #f5e6f8;
+  color: #5a306b;
+  font-weight: bold;
+  box-shadow: 0 0 8px #d2a8f8;
+}
+
+body {
+      transition: background 0.5s ease-in-out;
+      overflow-x: hidden;
+    }
+    .float-emoji {
+      position: absolute;
+      top: 100%;
+      font-size: 2rem;
+      animation: floatUp 4s linear infinite;
+      z-index: 10;
+    }
+    @keyframes floatUp {
+      to {
+        transform: translateY(-120vh);
+        opacity: 0;
+      }
+    }
+    .loved-theme {
+      background: linear-gradient(to right, #ffd8ea, #e68cca);
+    }</style></head>
+<body class="love-bg">
+<div id="emojiContainer"></div>
+  <div class="floating-hearts"></div>
+
+  <div class="container">
+    <h1>From You, To Me 💖</h1>
+   
+<form action="{{ url_for('submit_message') }}" method="POST">
+ 
+      <label for="mood">How did this gift make you feel?</label><br>
+      <select id="moodSelect" name="mood" required>
+  <option value="">--Choose an emoji--</option>
+  <option value="emotional">😭 Emotional</option>
+  <option value="magical">✨ Magical</option>
+  <option value="romantic">💗 Romantic</option>
+  <option value="spicy">🔥 Spicy</option>
+  <option value="goofy">😆 Happy-Goofy</option>
+  <option value="loved">🥰 Loved</option>
+</select><br><br>
+
+      <label for="message">Want to tell me something?</label><br>
+      <textarea name="message" id="message" rows="6" placeholder="Write from the heart..." required></textarea><br><br>
+
+      <button type="submit">Send it to the stars 💌</button>
+    </form>
+  </div>
+
+  <script>
+    const moodSelect = document.getElementById("moodSelect");
+    const emojiContainer = document.getElementById("emojiContainer");
+
+    const moodData = {
+      magical:    { color: "#dfbd69", emoji: "✨" },
+      emotional:  { color: "#82caff", emoji: "🥹" },
+      romantic:   { color: "#fc8eac", emoji: "😘" },
+      goofy:      { color: "#a8e4a0", emoji: "😆" },
+      spicy:      { color: "orange",  emoji: "🔥" },
+      loved:      { color: "gradient", emoji: "🥰" }
+    };
+
+    moodSelect.addEventListener("change", () => {
+      const mood = moodSelect.value;
+      document.body.className = "";
+      emojiContainer.innerHTML = "";
+
+      if (!mood) return;
+
+      if (mood === "loved") {
+        document.body.classList.add("loved-theme");
+      } else {
+        const moodInfo = moodData[mood];
+        if (moodInfo) {
+          document.body.style.background = moodInfo.color;
+        }
+      }
+
+      const moodInfo = moodData[mood];
+      if (moodInfo) {
+        for (let i = 0; i < 15; i++) {
+          const emoji = document.createElement("span");
+          emoji.textContent = moodInfo.emoji;
+          emoji.className = "float-emoji";
+          emoji.style.left = Math.random() * 100 + "vw";
+          emoji.style.animationDelay = Math.random() * 2 + "s";
+          emojiContainer.appendChild(emoji);
+        }
+      }
+    });
+  </script>
+<div id="emojiContainer"></div>
+</body>
+</html>

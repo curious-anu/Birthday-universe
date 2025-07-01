@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Amit’s Birthday Universe 💜</title>
-  <link rel="stylesheet" href="stylee.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='stylee.css') }}" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -22,12 +22,14 @@
   <div class="nav-button">
     ☰
     <div class="nav-menu">
-      <a href="timer.html">1.Timer</a>
-      <a href="game.html">2.Game!</a>
-      <a href="puzzle.html">3.Drag and drop!!</a>
-      <a href="letter.html">4.A Letter</a>
-      <a href="memories.html">5.Memory pic Wall </a>
-      <a href="cake.html">6.Surprise! </a>
+      <a href="{{ url_for('home') }}">1.Home</a>
+      <a href="{{ url_for('timer') }}">2.Timer</a>
+      <a href="{{ url_for('game') }}">3.Game</a>
+      <a href="{{ url_for('puzzle') }}">4.Puzzle</a>
+      <a href="{{ url_for('letter') }}">5.Letter</a>
+      <a href="{{ url_for('gallery') }}">6.Gallery</a>
+      <a href="{{ url_for('cake') }}">7.Surprise</a>
+      <a href="{{ url_for('from_you') }}">8.Magic Tab(to be visited after all the tabs)</a>
 
     </div>
   </div>
@@ -40,14 +42,14 @@
     <div class="audio-box">
       <p>💌 Play this if you want to hear from me 💌</p>
       <audio controls>
-        <source src="audio/voice.mp3" type="audio/mp3">
+        <source src="{{ url_for('static', filename='audio/voice.mp3') }}" type="audio/mp3">
         Your browser does not support the audio element.
       </audio>
     </div>
   </div>
 
   <footer>
-    Made with keyboard, curd, and love by Anu 💜
+    Made with 🐍, keyboard, curd and Amit's love💜
   </footer>
 
 </body>

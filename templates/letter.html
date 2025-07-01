@@ -67,16 +67,19 @@
 <body>
 
 <!-- Top Nav Button -->
-  <div class="nav-button">
-    <div class="nav-menu">
-      <a href="indexxx.html">1.Home💗</a>
-      <a href="timer.html">2.Timer💗</a>
-      <a href="game.html">3.Game💗</a>
-      <a href="puzzle.html">4.Puzzle💗</a>
-      <a href="letter.html">5.A Letter💗</a>
-      <a href="gallery.html">6.Memory pic Wall💗 </a>
-      <a href="cake.html">7.Surprise! </a>
-    </div>
+ <div class="nav-button" tabindex="0">
+  ☰
+  <div class="nav-menu">
+    <a href="{{ url_for('home') }}">1.Home</a>
+    <a href="{{ url_for('timer') }}">2.Timer</a>
+    <a href="{{ url_for('game') }}">3.Game</a>
+    <a href="{{ url_for('puzzle') }}">4.Puzzle</a>
+    <a href="{{ url_for('letter') }}">5.Letter</a>
+    <a href="{{ url_for('gallery') }}">6.Gallery</a>
+    <a href="{{ url_for('cake') }}">7.Surprise</a>
+    <a href="{{ url_for('from_you') }}">8.Magic Tab</a>
+  </div>
+</div>
 
   <h1>🕊️ A Letter Flew Just For You 🕊️</h1>
 <h3>Click on the pigeon to recieve it..and yes u r right..her name is Anu uwu :3</h3>
@@ -100,7 +103,7 @@ Anu      <br>
 
   <!-- Background Music -->
   <audio controls autoplay>
-    <source src="audio/music.mp3" type="audio/mpeg">
+     <source src="{{ url_for('static', filename='audio/music.mp3') }}" type="audio/mpeg">
     Your browser does not support the audio tag.
   </audio>
 

@@ -4,6 +4,47 @@
   <meta charset="UTF-8" />
   <title>Amit's Puzzle</title>
   <style>
+
+    /* Hamburger nav styles */
+.nav-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 1.5em;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1000;
+}
+.nav-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1001;
+}
+.nav-button:hover .nav-menu,
+.nav-button:focus-within .nav-menu {
+  display: block;
+}
+.nav-menu a {
+  display: block;
+  padding: 5px 10px;
+  color: #4b006e;
+  text-decoration: none;
+  font-weight: bold;
+}
+.nav-menu a:hover {
+  background-color: #f0d9ff;
+  border-radius: 5px;
+}
+body {
+  padding-top: 80px; /* Add space so images don't go under nav */
+}
+
     body {
       background: linear-gradient(to bottom right, #e0c3fc, #8ec5fc);
       font-family: 'Quicksand', sans-serif;
@@ -65,16 +106,19 @@
 </head>
 <body>
  <!-- Top Nav Button -->
-  <div class="nav-button">
-    <div class="nav-menu">
-      <a href="indexxx.html">1.Home💗</a>
-      <a href="timer.html">2.Timer💗</a>
-      <a href="game.html">3.Game💗</a>
-      <a href="puzzle.html">4.Puzzle💗</a>
-      <a href="letter.html">5.A Letter💗</a>
-      <a href="gallery.html">6.Memory pic Wall💗 </a>
-      <a href="cake.html">7.Surprise! </a>
-    </div>
+ <div class="nav-button" tabindex="0">
+  ☰
+  <div class="nav-menu">
+    <a href="{{ url_for('home') }}">1.Home</a>
+    <a href="{{ url_for('timer') }}">2.Timer</a>
+    <a href="{{ url_for('game') }}">3.Game</a>
+    <a href="{{ url_for('puzzle') }}">4.Puzzle</a>
+    <a href="{{ url_for('letter') }}">5.Letter</a>
+    <a href="{{ url_for('gallery') }}">6.Gallery</a>
+    <a href="{{ url_for('cake') }}">7.Surprise</a>
+    <a href="{{ url_for('from_you') }}">8.Magic Tab</a>
+  </div>
+</div>
 
   <h2>🔐 Complete the lovely Phrases to Unlock the Secret 💜</h2>
   <h4>Drag and drop in the boxes until all answers r correct and a secret suprise msg is popped below</h4>

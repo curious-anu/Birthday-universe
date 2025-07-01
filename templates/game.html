@@ -6,9 +6,30 @@
   <link rel="stylesheet" href="stylee.css">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Dancing+Script&display=swap" rel="stylesheet">
   <style>
-.nav-button {
-  margin-bottom: 20px; /* Add margin below the navigation bar */
-}
+    .nav-button {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 1.5em;
+      cursor: pointer;
+      user-select: none;
+      z-index: 1000;
+    }
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1001;
+    }
+    .nav-button:hover .nav-menu,
+    .nav-button:focus-within .nav-menu {
+      display: block;
+    }
 
     .gift-grid {
       display: grid;
@@ -91,21 +112,22 @@ h3 {
 </head>
 <body>
 
-  <div class="nav-button">
+  <div class="nav-button" tabindex="0">
+    ☰
     <div class="nav-menu">
-      <a href="indexxx.html">Home</a>
-      <a href="timer.html">1.Timer</a>
-      <a href="game.html">2.Game</a>
-      <a href="puzzle.html">3.Game(The current page)</a>
-      <a href="letter.html">4.Letters</a>
-      <a href="gallery.html">5.Memory pic Wall </a>
-      <a href="cake.html">6.Let's party! </a>
+      <a href="{{ url_for('home') }}">1.Home</a>
+      <a href="{{ url_for('timer') }}">2.Timer</a>
+      <a href="{{ url_for('game') }}">3.Game</a>
+      <a href="{{ url_for('puzzle') }}">4.Puzzle</a>
+      <a href="{{ url_for('letter') }}">5.Letter</a>
+      <a href="{{ url_for('gallery') }}">6.Gallery</a>
+      <a href="{{ url_for('cake') }}">7.Cake</a>
+      <a href="{{ url_for('from_you') }}">8.Magic Tab</a>
+    </div>
   </div>
-</div>
  
-  <div class="game-area" style="margin-top: 100px; margin-right: 250px;">
+  <div class="game-area" style="margin-top: 120px;">
     <h3 style="text-align: left; font-family: 'Dancing Script', cursive; font-size: 3rem; color: #6a0dad;">🎁 Find the Gift I Hid Just for You 🎁</h3>
-<h4>Please press the back button once done,cholli..was unable to add navigation here..</h4>
     <div class="gift-grid">
       <div class="gift" onclick="wrong()">🎀</div>
       <div class="gift" onclick="wrong()">📦</div>
