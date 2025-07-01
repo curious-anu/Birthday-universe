@@ -1,21 +1,45 @@
-from flask import Flask, render_template, request, redirect, url_for
-import csv
+import os
+from flask import Flask, render_template, request
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
 
-@app.route('/fromyou')
-def from_you():
-    return render_template('fromyou.html')
-
-@app.route('/submit-message', methods=["POST"])
+@app.route('/submit-message', methods=['POST'])
 def submit_message():
-    mood = request.form.get("mood")  
-    message = request.form.get("message")
-    print(f"Received mood: {mood}, message: {message}")  # Debug print
-    with open("messagesfromamit.csv", mode="a", newline='', encoding="utf-8") as file:
-        writer = csv.writer(file)
-        writer.writerow([mood, message])
-    return "<h2>✨ Thank you my genius developer..my amit uwu:3. Your message is now floating in the stars ✨</h2>"
+    mood = request.form['mood']
+    message = request.form['message']
+
+    email_sender = os.environ.get('EMAIL_USER')
+    email_password = os.environ.get('EMAIL_PASSWORD')
+    email_receiver = email_sender  # you can change to another if needed
+
+    email_subject = f"New Message from Amit 💖 [{mood}]"
+    body = f"""You received a message from Amit 💌
+
+Mood: {mood}
+Message: {message}
+"""
+
+    msg = MIMEMultipart()
+    msg['From'] = email_sender
+    msg['To'] = email_receiver
+    msg['Subject'] = email_subject
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        with smtplib.SMTP('smtp.gmail.com', 587) as server:
+            server.starttls()
+            server.login(email_sender, email_password)
+            server.send_message(msg)
+
+        print("✅ Email sent successfully")
+        return "<h2>✨ Message sent to the stars…Thank you..Hope this lil gift made your birthday better!<br>With all love,<br>Mrs. Amit:3</br>You are the best!Pani pilo hehe✨</h2>"
+    except Exception as e:
+        print(f"❌ Email sending error: {e}")
+        return "<h2>❌ There was an error sending your message. Please try again later.</h2>"
+
 
 @app.route('/')
 def home():
