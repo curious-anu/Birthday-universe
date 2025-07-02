@@ -31,7 +31,7 @@ def submit_message():
             server.send_message(msg)
 
         print("✅ Email sent")
-        return "<h2>✨ Thank you! Your message has been sent! ✨</h2>"
+        return "<h2>Thankyou so much bae, hope this lil digital gift makes your birthday better!I love you so much that not even any webapp or any words can describe it..<3..You are the bestest! ✨</h2><br>With lots of hugs and kisses,<br>Mrs.Amit<br><a href='https://t.me/curious_lil_star'>Link to Telegram</a><br><a href='/'>Go back to main page</a> <br><a href='/fromyou'>Go back to the magic page</a>"
 
     except Exception as e:
         print(f"❌ Error: {e}")
