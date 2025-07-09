@@ -31,7 +31,7 @@ def submit_message():
             server.send_message(msg)
 
         print("✅ Email sent")
-        return "<h2>Thankyou so much bae, hope this lil digital gift makes your birthday better!I love you so much that not even any webapp or any words can describe it..<3..You are the bestest! ✨</h2><br>With lots of hugs and kisses,<br>Mrs.Amit<br><a href='https://t.me/curious_lil_star'>Link to Telegram</a><br><a href='/'>Go back to main page</a> <br><a href='/fromyou'>Go back to the magic page</a>"
+        return render_template("thankyou.html")
 
     except Exception as e:
         print(f"❌ Error: {e}")
@@ -70,5 +70,6 @@ def cake():
     return render_template('cake.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
 
