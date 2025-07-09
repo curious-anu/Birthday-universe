@@ -3,6 +3,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
+import traceback
 
 app = Flask(__name__)
 
@@ -35,6 +36,7 @@ def submit_message():
 
     except Exception as e:
         print(f"❌ Error: {e}")
+        traceback.print_exc()
         return "<h2>Oops! Something went wrong. Try again later.</h2>"
 
 @app.route('/')
@@ -71,5 +73,5 @@ def cake():
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 10000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port) # Debug mode is disabled for production
 
